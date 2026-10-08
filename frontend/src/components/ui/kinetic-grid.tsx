@@ -141,5 +141,10 @@ export default function KineticGrid({ children, className, globalColor = 'defaul
     return () => { window.removeEventListener('resize', setSize); window.removeEventListener('mousemove', onMove); window.removeEventListener('click', onClick); cancelAnimationFrame(rafRef.current); };
   }, [animate]);
 
-  return <div className={cn('relative min-h-screen w-full overflow-hidden bg-[#09090b]', className)}><canvas ref={canvasRef} className="fixed inset-0 z-0 h-full w-full pointer-events-none" aria-hidden="true" /><div className="relative z-10 min-h-screen w-full">{children}</div></div>;
+  return (
+    <div className={cn('relative isolate min-h-screen w-full overflow-hidden bg-[#09090b]', className)}>
+      <canvas ref={canvasRef} className="fixed inset-0 h-full w-full pointer-events-none" style={{ zIndex: 0 }} aria-hidden="true" />
+      <div className="relative min-h-screen w-full" style={{ zIndex: 1 }}>{children}</div>
+    </div>
+  );
 }

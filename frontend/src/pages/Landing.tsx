@@ -32,7 +32,7 @@ export default function Landing() {
 
   return (
     <KineticGrid>
-    <div className="min-h-screen flex flex-col items-center relative overflow-hidden">
+    <div className="min-h-screen flex flex-col items-center relative z-10 overflow-hidden">
       {/* Replaced by KineticGrid. */}
       <div className="hidden" 
            style={{ 
